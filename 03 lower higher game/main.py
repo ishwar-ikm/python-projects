@@ -18,7 +18,13 @@ while not end:
     print(f"Compare A: {person[len(person)-2]['name']}, a {person[len(person)-2]['description']}, from {person[len(person)-2]['country']}")
     print(vs)
     print(f"Against B: {person[len(person) - 1]['name']}, a {person[len(person) - 1]['description']}, from {person[len(person) - 1]['country']}")
+    
+    while True:
     choice = input("Who has more followers? Type 'A' or 'B': ").lower()
+    if choice == 'a' or choice == 'b':
+        break
+    print("Wrong input Try Again!")
+    
     if choice == 'a':
         human = len(person)-2
         other = len(person)-1
