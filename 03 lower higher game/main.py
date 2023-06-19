@@ -2,6 +2,7 @@ from art import *
 from game_data import *
 import random
 
+print(logo)
 score = 0
 person = []
 person.append(random.choice(data))
