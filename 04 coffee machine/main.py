@@ -42,7 +42,7 @@ def report():
 def payment():
     quarters = int(input("How many quarters: "))*0.25
     dimes = int(input("How many dimes: ")) * 0.1
-    nickles = int(input("How many nickles: ")) * 0.25
+    nickles = int(input("How many nickles: ")) * 0.05
     pennies = int(input("How many pennies: ")) * 0.01
     return quarters+dimes+nickles+pennies
 
