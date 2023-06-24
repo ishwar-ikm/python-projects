@@ -1,0 +1,1 @@
+There are 6 turtles of colors "red", "purple", "green", "blue", "yellow", "orange" and user gets to bet on any one of these colored turtles. All the turtles take positions and start the race are random pace and random turtles moves at a time. After the race is finished, the results are declared and tell the user whether they won or not.
