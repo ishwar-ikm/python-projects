@@ -9,3 +9,5 @@ There are 5 programs which I did on the way to learn Turtle module
 04_spirograph: A program to create a spirograph, which consists of 72 circles
 
 05_hirst_painting: This program recreates the famous hirst painting (https://www.phillips.com/detail/damien-hirst/UK010616/20) using turtle. I first used hirst_img.jpg to extract the color used in the painting using colorgram and then used the list of those colors to random draw dots using turtle.
+
+06_etch_a_sketch: We have an arrow which moves accoring to the keyboard input and draw lines along the way. W to  move forwards, S to move backwards, A to turn left, D to turn righta and Spacebar resets back to the orginal position
