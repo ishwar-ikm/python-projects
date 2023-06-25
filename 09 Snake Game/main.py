@@ -1,19 +1,23 @@
+# Importing the required libraries
 import turtle
 import time
 import food
 import scoreboard
 from snake import Snake
 
+# Creating a Screen object
 sc = turtle.Screen()
 sc.setup(width=600, height=600)
 sc.title("My Snake Game")
 sc.bgcolor("black")
 sc.tracer(0)
 
+# Creating object for Snake, Food and Score class
 snake = Snake()
 food = food.Food()
 score = scoreboard.Score()
 
+# Taking the user Input for the movement of snake 
 sc.listen()
 sc.onkey(snake.up, "Up")
 sc.onkey(snake.down, "Down")
@@ -29,10 +33,11 @@ sc.onkey(snake.right, "d")
 sc.onkey(snake.left, "a")
 
 
+# Game code and its functionalities
 game_continue = True
 while game_continue:
-    sc.update()
-    time.sleep(0.1)
+    sc.update() # Refreshing the Animation after every updating every iteration for smooth animation
+    time.sleep(0.1) # Set the speed of the snake
     snake.move()
 
     # detect collision with food
