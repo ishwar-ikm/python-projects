@@ -1,6 +1,6 @@
 import turtle
 
-# Creating a Snake class
+# Creating a Snake class for snake body and to define the behaviour of the snake
 class Snake:
     body = [] # Attribute that contains turtle objects which makes the body of the snake
 
