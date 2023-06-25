@@ -2,7 +2,7 @@ import turtle
 import random
 
 
-# Create a food class
+# Create a food class to update the position and appearance of food
 class Food(turtle.Turtle):
 
     # Define the constructor for the appearance of the food
