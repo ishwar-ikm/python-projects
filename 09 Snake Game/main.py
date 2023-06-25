@@ -42,9 +42,9 @@ while game_continue:
 
     # detect collision with food
     if snake.head.distance(food) < 15:
-        food.set_position()
-        snake.extend()
-        score.inc_score()
+        food.set_position() # Randomly update the food position
+        snake.extend() # Extend the tail of the snake
+        score.inc_score() # Increase Score
 
     # detect collision with wall
     if snake.head.xcor() > 280 or snake.head.ycor() > 255 or snake.head.xcor() < -280 or snake.head.ycor() < -280:
@@ -53,7 +53,7 @@ while game_continue:
 
     # detect colision with body
     for body in snake.body:
-        if body == snake.head:
+        if body == snake.head: # Avoid head to get the distance
             continue
         elif snake.head.distance(body) < 10:
             score.game_over()
