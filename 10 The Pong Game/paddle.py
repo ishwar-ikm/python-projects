@@ -1,7 +1,7 @@
 import turtle
 
 
-# Class paddle which inherits Turtle class
+# In the Paddle class, which inherits the Turtle class, the Paddle's properties and behavior are defined
 class Paddle(turtle.Turtle):
     def __init__(self, position): # Constructor to define the characteristics of the paddle
         super().__init__() # Calling the constructor from the super class
