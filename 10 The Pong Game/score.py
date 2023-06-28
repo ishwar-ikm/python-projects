@@ -1,7 +1,7 @@
 import turtle
 
 
-# Class Score which inherits  Turtle class is made to keep track of the player's score
+# In the Score class, which inherits the Turtle class, the score of both the players are tracked
 class Score(turtle.Turtle):
 
     # Constructor to define the text properties
@@ -25,10 +25,10 @@ class Score(turtle.Turtle):
         self.display()
 
 
-# Class line to make the dotted lines between the two players
+# In the Line class, which inherits the Turtle class, the Line's properties are defined
 class Line(turtle.Turtle):
 
-    # Constructor to difine the propertied of the line as well as to make the line
+    # Constructor to define the propertied of the line as well as to make the line
     def __init__(self):
         super().__init__()
         self.penup()
