@@ -18,5 +18,5 @@ class Food(turtle.Turtle):
     # Method to randomly set the position of the food
     def set_position(self):
         x = random.randint(-280, 280)
-        y = random.randint(-280, 255)
+        y = random.randint(-280, 240)
         self.goto(x, y)
