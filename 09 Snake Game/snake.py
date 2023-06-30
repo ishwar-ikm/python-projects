@@ -6,12 +6,17 @@ class Snake:
 
     # Defining a constructor to make the initial body of the snake
     def __init__(self):
+        self.body = []
+        self.head = turtle.Turtle() # Define the head of the snake
+        self.create_snake()
+
+    def create_snake(self):
         x = 0
         pos = (x, 0)
         for i in range(3):
             self.add_tail(pos)
             x -= 20
-        self.head = self.body[0] # Define the head attribute
+        self.head = self.body[0]
 
     # The method to add tail
     def add_tail(self, position):
@@ -47,3 +52,10 @@ class Snake:
     def right(self):
         if self.head.heading() != 180:
             self.head.setheading(0)
+
+    # Method to reset the snake position to start the game again
+    def reset(self):
+        for part in self.body:
+            part.goto(1000, 1000)
+        self.body.clear()
+        self.create_snake()
