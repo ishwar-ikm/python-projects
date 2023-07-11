@@ -12,6 +12,12 @@ RECEIVER_EMAIL = ""
 
 
 def is_birthday():
+    """
+    Check if today is someone's birthday.
+
+    Returns:
+        bool: True if it's someone's birthday, False otherwise.
+    """
     global RECEIVER_NAME, RECEIVER_EMAIL
 
     today = dt.datetime.now()
@@ -29,16 +35,18 @@ def is_birthday():
 
 
 if is_birthday():
+    # Choose a random letter template
     with open(f"letter_templates/letter_{random.randint(1, 3)}.txt") as file:
         content = file.read()
         content = content.replace("[NAME]", RECEIVER_NAME)
 
-connection = smtplib.SMTP("smtp.gmail.com")
-connection.starttls()
-connection.login(MY_EMAIL, MY_PASSWORD)
-connection.sendmail(
-    from_addr=MY_EMAIL,
-    to_addrs=RECEIVER_EMAIL,
-    msg=f"subject:HAPPY BIRTHDAY!!\n\n{content}"
-)
-connection.close()
+    # Connect to SMTP server and send the email
+    connection = smtplib.SMTP("smtp.gmail.com")
+    connection.starttls()
+    connection.login(MY_EMAIL, MY_PASSWORD)
+    connection.sendmail(
+        from_addr=MY_EMAIL,
+        to_addrs=RECEIVER_EMAIL,
+        msg=f"subject:HAPPY BIRTHDAY!!\n\n{content}"
+    )
+    connection.close()
