@@ -7,3 +7,5 @@ Uses customizable email templates
 Supports Gmail as the email service provider
 
 User can personalize the message in letter_templates and add or edit birthdays in birthday.csv file.
+
+To completely automate this project we can upload these files to python anywhere website (https://www.pythonanywhere.com/) and schedule task to run this program every day on certain time on that day.
