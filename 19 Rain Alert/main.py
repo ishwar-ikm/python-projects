@@ -2,7 +2,7 @@ import requests
 import smtplib
 
 
-#-------- Parameters for api request --------#
+#-------- Parameters for API request --------#
 parameters = {
     "lat": 30.361031,
     "lon": 76.848549,
@@ -28,6 +28,7 @@ min_temp_morning = 400
 #-------- Variables to store the raining conditions --------#
 will_rain_morning = "No"
 
+# Calculating weather data for morning time
 for hour_data in data_morning:
     morning_temp += hour_data['main']['temp']
     max_temp_morning = max(max_temp_morning, hour_data['main']['temp'])
@@ -43,6 +44,7 @@ min_temp_night = 400
 
 will_rain_night = "No"
 
+# Calculating weather data for night time
 for hour_data in data_night:
     night_temp += hour_data['main']['temp']
     max_temp_night = max(max_temp_night, hour_data['main']['temp'])
@@ -51,23 +53,24 @@ for hour_data in data_night:
     if hour_data['weather'][0]['id'] < 700:
         will_rain_night = "Yes"
 
+# Constructing the weather report message
 message = f'''
-Day time average temperature will be: {round(morning_temp/4-273.15, 2)}
-Night time average temperature will be: {round(night_temp/3-273.15, 2)}
-Maximum and minimum temperature during day time: {round(max_temp_morning-273.15)}, {round(min_temp_morning-273.15)}
-Maximum and minimum temperature during nigt time: {round(max_temp_night-273.15)}, {round(min_temp_night-273.15)}
-Will it rain in morning: {will_rain_morning}
-Will it rain in night: {will_rain_night}
+Daytime average temperature will be: {round(morning_temp/4-273.15, 2)}
+Nighttime average temperature will be: {round(night_temp/3-273.15, 2)}
+Maximum and minimum temperature during daytime: {round(max_temp_morning-273.15)}, {round(min_temp_morning-273.15)}
+Maximum and minimum temperature during nighttime: {round(max_temp_night-273.15)}, {round(min_temp_night-273.15)}
+Will it rain in the morning: {will_rain_morning}
+Will it rain at night: {will_rain_night}
 '''
 
 
 ################ Sending email about the weather condition ################
-connection = smtplib.SMTP("smtp.gmail.com")
-connection.starttls()
-connection.login("My Email", "My app password")
+connection = smtplib.SMTP("smtp.gmail.com")  # Establishing an SMTP connection with Gmail server
+connection.starttls()  # Starting a secure TLS connection
+connection.login("My Email", "My app password")  # Logging into the Gmail account
 connection.sendmail(
-    from_addr="Sender's email",
-    to_addrs="Receiver's email",
-    msg="subject:Weather Report\n\n"+message
+    from_addr="Sender's email",  # Sender's email address
+    to_addrs="Receiver's email",  # Receiver's email address
+    msg="subject:Weather Report\n\n" + message  # Composing the email message with the subject and body
 )
-connection.close()
+connection.close()  # Closing the SMTP connection
