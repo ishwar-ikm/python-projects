@@ -16,7 +16,7 @@ API Request:
 
 Data Retrieval:
 - The code extracts the weather data for the morning and night for the current date from the API response.
-- The morning data consists of the first 4 hourly forecasts, and the night data consists of the next 3 hourly forecasts.
+- The morning data consists of the first 4 3 hourly forecasts, and the night data consists of the next 3 3 hourly forecasts.
 - The temperature, maximum and minimum temperatures, and rain condition for both morning and night are extracted and stored in variables.
 
 Email Composition:
