@@ -3,8 +3,8 @@ import datetime as dt
 
 
 #------------- Set up the user account -------------#
-USERNAME = # your username
-TOKEN = # your token
+USERNAME = # Replace with your username
+TOKEN = # Replace with your token
 
 user_endpoint = "https://pixe.la/v1/users"
 
@@ -47,7 +47,7 @@ put_endpoint = f"{user_endpoint}/{USERNAME}/graphs/graph1"
 
 put_params = {
     'date': today_date,
-    'quantity': str(input("How many steps you walked today? ")),
+    'quantity': str(input("How many steps did you walk today? ")),
 }
 
 # response = requests.post(put_endpoint, json=put_params, headers=headers)
@@ -57,15 +57,15 @@ put_params = {
 #------------- Update graph -------------#
 update_endpoint = f"{user_endpoint}/{USERNAME}/graphs/graph1/{today_date}"
 
-new_data = {
-    'quantity': str(input("How many steps you walked today? ")),
+updated_data = {
+    'quantity': str(input("How many steps did you walk today? ")),
 }
 
-# response = requests.post(put_endpoint, json=put_params, headers=headers)
+# response = requests.post(update_endpoint, json=updated_data, headers=headers)
 # print(response.text)
-str(input("How many steps you walked today? "))
 
 #------------- Delete pixel -------------#
-delete_endpoint = f"{user_endpoint}/{USERNAME}/graphs/graph1/20230710"
+pixel_date = "20230710"
+delete_endpoint = f"{user_endpoint}/{USERNAME}/graphs/graph1/{pixel_date}"
 
 response = requests.delete(delete_endpoint, headers=headers)
