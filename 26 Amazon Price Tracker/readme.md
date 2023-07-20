@@ -3,6 +3,9 @@ This is a Python script that fetches the price of a product from Amazon and send
 
 # Note
 -> Replace "Your user agent" and "Your accept language" with appropriate values for your browser's user agent and language preferences. Also, set "Product URL" to the actual URL of the Amazon product you want to monitor.
+
 -> Replace "YourEmail@gmail.com" with your Gmail email address and "YourAppPassword" with your Gmail app password. Also, set the appropriate "ReceiverEmail@gmail.com" where you want to receive the email notifications.
+
 -> Ensure that your Gmail account allows "less secure apps" to access it. Alternatively, you can set up two-factor authentication and create an "App password" for your script to use.
+
 -> The script fetches the price from Amazon's website, and the code might break if the website structure changes.
