@@ -1,24 +1,55 @@
 import requests
 from bs4 import BeautifulSoup
+import smtplib
 
+# Set user-agent headers and the product URL
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-    'Accept-Language': 'en-IN,en;q=0.9,en-US;q=0.8,hi;q=0.7,fr;q=0.6'
+    'User-Agent': 'Your user agent',
+    'Accept-Language': 'Your accept language'
 }
-response = requests.get(headers=headers, url="https://www.amazon.in/Sony-PS5-Digital-Standalone/dp/B0BSNHFVL4/?_encoding=UTF8&pd_rd_w=eD5N8&content-id=amzn1.sym.e5c03be3-10ba-4bc8-b9be-6fcea12320ed%3Aamzn1.symc.adba8a53-36db-43df-a081-77d28e1b71e6&pf_rd_p=e5c03be3-10ba-4bc8-b9be-6fcea12320ed&pf_rd_r=79JS5PXA31SDJ3ARD6WS&pd_rd_wg=NrIfk&pd_rd_r=84659370-2616-4552-9569-eb18be450ce7&ref_=pd_gw_ci_mcx_mr_hp_atf_m")
-webpage = response.text
 
-soup = BeautifulSoup(webpage, 'html.parser')
+product_url = "Product URL"
 
-price = int(soup.select('.a-price-whole')[0].getText().replace(".", "").replace(",", ""))
+try:
+    # Fetch the webpage and parse it
+    response = requests.get(headers=headers, url=product_url)
+    response.raise_for_status()  # Raise an exception for any unsuccessful HTTP response
+    webpage = response.text
+    soup = BeautifulSoup(webpage, 'html.parser')
 
-if price <= 40000:
-    connection = smtplib.SMTP("smtp.gmail.com")  # Establishing an SMTP connection with Gmail server
-    connection.starttls()  # Starting a secure TLS connection
-    connection.login("My Email", "My app password")  # Logging into the Gmail account
-    connection.sendmail(
-        from_addr="Sender's email",  # Sender's email address
-        to_addrs="Receiver's email",  # Receiver's email address
-        msg="subject:Weather Report\n\n" + message  # Composing the email message with the subject and body
-    )
-    connection.close()  # Closing the SMTP connection
+    # Extract the price from the webpage
+    price = int(soup.select('.a-price-whole')[0].getText().replace(".", "").replace(",", ""))
+
+    # Set the desired price threshold
+    threshold_price = 40000
+
+    # Check if the current price is below the threshold
+    if price <= threshold_price:
+        # Establish an SMTP connection with Gmail server
+        connection = smtplib.SMTP("smtp.gmail.com")
+        connection.starttls()  # Start a secure TLS connection
+
+        # Replace "Your Email" and "Your app password" with your Gmail credentials
+        connection.login("Your Email", "Your app password")
+
+        # Compose the email message with the subject and body
+        subject = "Price Drop Alert"
+        body = "The price of the product has dropped below the specified threshold. Check it out on Amazon!"
+        message = f"Subject: {subject}\n\n{body}"
+
+        # Replace "Sender's email" and "Receiver's email" with appropriate email addresses
+        from_addr = "Sender's email"
+        to_addrs = "Receiver's email"
+
+        # Send the email notification
+        connection.sendmail(from_addr, to_addrs, message)
+
+        # Close the SMTP connection
+        connection.close()
+
+except requests.exceptions.HTTPError as http_err:
+    print(f"HTTP error occurred: {http_err}")
+except requests.exceptions.RequestException as req_err:
+    print(f"Request error occurred: {req_err}")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
