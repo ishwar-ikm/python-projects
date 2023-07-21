@@ -3,7 +3,9 @@ This is a Python script that tracks exercises using the Nutritionix API and upda
 
 # Set up the environment variables:
 => Set NT_APP_ID to your Nutritionix API ID.
+
 => Set NT_API_KEY to your Nutritionix API Key.
+
 => Set SHEET_ENDPOINT to the Sheety API endpoint for updating the Google Sheets spreadsheet.
 
 # How it works
