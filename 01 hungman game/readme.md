@@ -1,7 +1,7 @@
 # Hangman Game
 This is a simple Hangman game implemented in Python. The game will choose a random word from a predefined list, and the player needs to guess the letters of the word within a limited number of attempts.
 
-# How to Play
+## How to Play
 The game will randomly select a word from a predefined list.
 
 You will see the length of the word displayed as underscores, representing each letter of the word to be guessed.
